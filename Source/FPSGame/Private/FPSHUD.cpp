@@ -7,16 +7,14 @@
 #include "CanvasItem.h"
 #include "UObject/ConstructorHelpers.h"
 
-AFPSHUD::AFPSHUD()
-{
+AFPSHUD::AFPSHUD() {
 	// Set the crosshair texture
 	static ConstructorHelpers::FObjectFinder<UTexture2D> CrosshairTexObj(TEXT("/Game/UI/FirstPersonCrosshair"));
 	CrosshairTex = CrosshairTexObj.Object;
 }
 
 
-void AFPSHUD::DrawHUD()
-{
+void AFPSHUD::DrawHUD() {
 	Super::DrawHUD();
 
 	// Draw very simple crosshair

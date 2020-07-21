@@ -10,8 +10,7 @@
 #include "Animation/AnimSequence.h"
 
 
-AFPSCharacter::AFPSCharacter()
-{
+AFPSCharacter::AFPSCharacter() {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(55.f, 89.f);
 
@@ -56,8 +55,7 @@ AFPSCharacter::AFPSCharacter()
 	GunMesh3P->SetupAttachment(Mesh3P, "GripPoint");
 }
 
-void AFPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
+void AFPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) {
 	// set up gameplay key bindings
 	check(PlayerInputComponent);
 
@@ -108,11 +106,9 @@ void AFPSCharacter::Tick(float DeltaTime) {
 }
 
 
-void AFPSCharacter::Fire()
-{
+void AFPSCharacter::Fire() {
 	// try and fire a projectile
-	if (ProjectileClass)
-	{
+	if (ProjectileClass) {
 		// Grabs location from the mesh that must have a socket called "Muzzle" in his skeleton
 		FVector MuzzleLocation = GunMesh1P->GetSocketLocation("Muzzle");
 		// Use controller rotation which is our view direction in first person
@@ -127,18 +123,15 @@ void AFPSCharacter::Fire()
 	}
 
 	// try and play the sound if specified
-	if (FireSound)
-	{
+	if (FireSound) {
 		UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
 	}
 
 	// try and play a firing animation if specified
-	if (FireAnimation)
-	{
+	if (FireAnimation) {
 		// Get the animation object for the arms mesh
 		UAnimInstance* AnimInstance = Mesh1P->GetAnimInstance();
-		if (AnimInstance)
-		{
+		if (AnimInstance) {
 			AnimInstance->PlaySlotAnimationAsDynamicMontage(FireAnimation, "Arms", 0.0f);
 		}
 	}
